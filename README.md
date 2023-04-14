@@ -1,5 +1,7 @@
 # The game of Life in Svelte/Javascript
 
+Live demo: [https://demin.ws/life/](https://demin.ws/life/)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
