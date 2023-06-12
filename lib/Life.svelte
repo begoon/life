@@ -1,7 +1,7 @@
 <script>
     import { onDestroy } from "svelte";
 
-    const size = 150;
+    const size = 100;
 
     let last_time = window.performance.now();
     let frame;
