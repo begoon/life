@@ -5,10 +5,9 @@ import { defineConfig } from "vite";
 // https://vitejs.dev/config/
 export default defineConfig({
     root: "lib",
-    base: "/life/",
     plugins: [svelte()],
     build: {
-        outDir: "../docs",
+        outDir: resolve(__dirname, "dist"),
         emptyOutDir: true,
         rollupOptions: {
             input: {

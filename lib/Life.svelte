@@ -1,6 +1,8 @@
 <script>
     import { onDestroy } from "svelte";
 
+    const size = 150;
+
     let last_time = window.performance.now();
     let frame;
 
@@ -37,8 +39,8 @@
     });
 
     function randomize() {
-        field = Array.from({ length: 150 }, () =>
-            Array.from({ length: 150 }, () => Math.random() < 0.3)
+        field = Array.from({ length: size }, () =>
+            Array.from({ length: size }, () => Math.random() < 0.3)
         );
     }
 
@@ -46,22 +48,38 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="grid h-screen place-items-center" on:click={randomize}>
+<div on:click={randomize}>
     <table>
         {#each field as row, i}
             <tr>
                 {#each row as cell, j}
-                    <td
-                        class="p-0 m-0 w-[4px] h-[4px]"
-                        style="background: {cell ? 'green' : 'white'}"
-                    />
+                    <td style="background: {cell ? 'green' : 'white'}" />
                 {/each}
             </tr>
         {/each}
-        <tr>
-            <td colspan={field.length} class="text-center">
-                Click on the field to randomize
-            </td>
-        </tr>
     </table>
+    <div>Click on the field to randomize</div>
 </div>
+
+<style>
+    :global(html) {
+        width: 100%;
+        height: 100%;
+    }
+    div {
+        display: grid;
+        place-items: center;
+    }
+    td {
+        padding: 0;
+        margin: 0;
+        width: 4px;
+        height: 4px;
+    }
+    @media (max-width: 800px) {
+        td {
+            width: 2px;
+            height: 2px;
+        }
+    }
+</style>
